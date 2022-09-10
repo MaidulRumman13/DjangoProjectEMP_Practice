@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+<body>
+
+    {% include 'emp/navbar.html' %}
+
+    <h1 class="text-center my-3">Welcom To Employee Management System</h1>
+    <h2 class="text-center my-3"> List of Employees</h2>
+
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#SNO.</th>
+                                <th>Name</th>
+                                <th>EMP ID</th>
+                                <th>PHONE</th>
+                                <th>WORKING</th>
+                                <th>DEPARTMENT</th>
+                                <th>ADDRESS</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for e in emps %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{e.name}}</td>
+                                <td>{{e.emp_id}}</td>
+                                <td>{{e.phone}}</td>
+                                <td>{{e.working}}</td>
+                                <td>{{e.dept}}</td>
+                                <td>{{e.address}}</td>
+                                <td>
+                                    <a href="/emp/delete_emp/{{e.id}}" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="/emp/update_emp/{{e.id}}" class="btn btn-primary btn-sm">update</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
